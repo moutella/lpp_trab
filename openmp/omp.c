@@ -45,36 +45,3 @@ float calcula(float local_a, float local_b, int local_n, float h) {
     
     return integral;
 }
-
-/*float calcula(float local_a, float local_b, int local_n, float h) {
-    float integralCalc;
-    float bEsq, bDir;
-    float f(float x); // função a integrar
-    bEsq = local_a;
-    bDir = bEsq + h;
-    int i = 0;
-    
-    //integral do exemplo estava errada
-    //integral abaixo calculada utilizando ((b+B)*h/2) para todos os trapezios no intervalo
-    #pragma omp for reduction(+:integralCalc)
-    for( i=0; i<local_n; i++) {
-        integralCalc += ((f(bEsq) + f(bDir)) * h)/2;   //((b+B)*h/2)
-        bEsq += h;                                  //atualizando as novas bases
-        bDir = bEsq + h;
-    }
-    
-    
-    return integralCalc;
-}
-*/
-
-
-float f(float x) {
-    float fx; // valor de retorno
-
-    // esta é a função a integrar
-    // exemplo: função quadrática
-    fx = x * x;
-
-    return fx;
-}
