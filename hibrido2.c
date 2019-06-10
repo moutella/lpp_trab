@@ -7,7 +7,7 @@ void main(int argc, char** argv) {
     //omp_set_num_threads(2);
     int num_processos; // número de processos
     float a=0.0, b=1.0; // intervalo a calcular
-    int num_trap=1024; // número de trapezóides
+    int num_trap=1024*1024*1024; // número de trapezóides
     float h; // base do trapezóide
     float local_a, local_b; // intervalo local
     int local_n; // número de trapezóides local
@@ -40,6 +40,7 @@ void main(int argc, char** argv) {
     
     //printf("Integral: %f, rank %d\n", integral, my_rank);
     MPI_Reduce(&integral, &total, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+	
     if(my_rank == 0){
 	//printf("Resultado: %f\n", total);
     } 

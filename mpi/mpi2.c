@@ -36,7 +36,7 @@ void main(int argc, char** argv) {
     integral = calcula(local_a, local_b, local_n, h);
 
     MPI_Reduce(&integral, &total, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-    if(my_rank == 0) printf("Resultado: %f\n", total);
+    //if(my_rank == 0) printf("Resultado: %f\n", total);
     MPI_Finalize();
 }
 

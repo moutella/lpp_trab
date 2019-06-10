@@ -1,23 +1,76 @@
-conn <- file("openmp/openmp1024.txt", "r")
-linn <- readLines(conn)
-v <- c()
-i = 2
-while(i < length(linn)){
-  print(linn[i])
-  v <- c(v,as.numeric(gsub(",", ".", substr(linn[i], 8, 12))))
-  i = i+4
+filevets <- c("openmp/openmp1024.txt","openmp/openmpmuitostraps.txt","mpi/mpi1024.txt","mpi/mpimuitos.txt","H1024.txt","muitos.txt")
+total = length(filevets)
+fc = 1
+while(fc < total+1){
+  conn <- file(filevets[fc], "r")
+  linn <- readLines(conn)
+  v <- c()
+  i = 3
+  media = 0
+  while(i < length(linn)){
+    #print(linn[i])
+    res = 0
+    if(nchar(linn[i]) > 13){
+      res = as.numeric(gsub(",", ".", substr(linn[i], 8, 13)))
+      v <- c(v,res)
+      print("oi")
+    }
+    else{
+      res = as.numeric(gsub(",", ".", substr(linn[i], 8, 12)))
+      v <- c(v,res)  
+    }
+    media = media + res
+    i = i+4
+    
+  }
+  media = media/length(v)
+  close(conn)  
 
-}
-close(conn)
+  string = ""
+  if(fc == 1){
+    string = "OpenMP para 1024 trapezios e 4 threads  \n"
+  
+  }
+  if(fc ==2){
+    string = "OpenMP para 1024³ trapezios e 4 threads  \n"  
+   
+  }
+  if(fc ==3){
+    string = "MPI para 1024 trapezios e 4 processos \n"
+  }
+  if(fc ==4){
+    string = "MPI para 1024³ trapezios e 4 processos \n"
+  }
+  if(fc ==5){
+    string = "MPI e OpenMP para 1024 trapezios com \n 2 processos e 2 threads \n"
+  }
+  if(fc ==6){
+    string = "MPI e OpenMP para 1024³ trapezios com \n 2 processos e 2 threads \n"
+  }
+  
+  string = paste(string,paste("Média:",toString(media),sep=" "  ),sep=" "  )
+  
+  min = min(v)
+  max = max(v)
+ # if(max < 1){
+#    min = floor(min)
+#  }
+  
+  hist(v, 
+       main=string, 
+       xlab="Tempos",
+       ylab = "Frequência",
+       xlim=c(min,max),
+       ylim=c(0,70),
+       las=1, 
+       breaks=7)  
 
-hist(v, 
-     main="OpenMP para 1024 trapezios : \n  ", 
-     xlab="Números",
-     ylab = "Frequência",
-     xlim=c(0,max(v)),
-     ylim=c(0,100),
-     las=1, 
-     breaks=5)
+  fc = fc+1
+  }
+
+
+
+
 
 #substr(s, 6, 12)
 #as.numeric(gsub(",", ".", substr(s, 8, 12)))
