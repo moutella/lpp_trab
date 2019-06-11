@@ -109,4 +109,5 @@ while(fc < total+1){
                                  "Híbrido" = "purple")) +
     labs(y="Tempo Médio 1024³t(segundos)", x="Programa") +
     theme(axis.text.x = element_text(face="bold"),
-          axis.text.y = element_text(face="bold"))
+          axis.text.y = element_text(face="bold")) + 
+    ylim(0,15)
