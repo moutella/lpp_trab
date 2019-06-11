@@ -31,7 +31,7 @@ void main(int argc, char** argv) {
     
     //integral *= h;
     total = integral;
-  //  printf("Valor da integral: %f\n", total);
+    printf("Valor da integral: %f\n", total);
 }
 
 
