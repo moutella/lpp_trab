@@ -18,11 +18,9 @@ Trabalhos da disciplina: Laboratório de Programação Paralela
     - Pegar tempo das duas execuções
   
 # Trabalho 2
-   Produto Escalar em openMP
+    Produto Escalar em openMP
     - Rodar evitando condição de corrida 
       - Utilizando Reduce 
       - Utilizando seção crítica
       - Utilizando uma solução própria
     - Esperando o resto do enunciado...
-  
-  
