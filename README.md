@@ -2,12 +2,12 @@
 Trabalhos da disciplina: Laboratório de Programação Paralela
 
 # Trabalho 1
-   Integral em MPI
+    Integral em MPI
     - Rodar em 4 processos
     - Rodar com 1024 e 1024^3 trapézios
     - Pegar tempo das duas execuções
 
-   Integral em openMP
+    Integral em openMP
     - Rodar em 4 threads
     - Rodar com 1024 e 1024^3 trapézios
     - Pegar tempo das duas execuções
