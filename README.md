@@ -12,7 +12,5 @@ Trabalhos de Laboratório de Programação Paralela
     - Reduce
     - Critical com temporária
     - Nova forma
-- Produto Escalar com MPI
-- Produto Escalar com OpenMP
-  
-  
+- Produto Escalar com MPI (usando ranks e balanceamento para cada parte do vetor) 
+- Produto Escalar Hibrido
