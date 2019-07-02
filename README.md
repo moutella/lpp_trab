@@ -8,9 +8,12 @@ Trabalhos de Laboratório de Programação Paralela
 - Integral Híbrida com MPI e OpenMP
 
 # Trabalho 2
-- Resolver condição de corrida no produto escalar(OpenMP)
+- Resolver condição de corrida no produto escalar(OpenMP) 4 threads  ( 3 programas)
     - Reduce
     - Critical com temporária
     - Nova forma
-- Produto Escalar com MPI (usando ranks e balanceamento para cada parte do vetor) 
-- Produto Escalar Hibrido
+    - Para cada um desses (ou um desses) utilizar escalonamento (schedule: static, dynamic)
+    
+- Programa com Paralelismo funcional  4 threads (1 programa)
+- Produto Escalar com MPI (usando ranks e balanceamento para cada parte do vetor) (1 programa)
+- Produto Escalar Hibrido (2 processos e 2 threads) (1 programa)
