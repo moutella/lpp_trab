@@ -15,16 +15,12 @@ int main(int argc, char* argv[]){
 	sum = 0;
 
 
-	// condição de corrida aqui
-	// quem fizer com critical DENTRO DO LOOP vai perder ponto!: temporaria e critical fora do loop
-		// com tempo e fora do loop
-		// reduce
-		// temporario indexado pelo rank da thread temp[rank]?
 	#pragma omp parallel for reduction(+:sum)
 	for(i = 0; i<n;i++){
 		sum = sum + a[i]*b[i];
 	}
 
-	printf("sum = %f\n",sum);
+	//removendo para agilizar o teste (se formos rodar varias vezes)
+	//printf("sum = %f\n",sum);
 
 }
