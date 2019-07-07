@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <omp.h>
 
-// trabalho final parte 1...?  paraleelizar e IMPEDIR CONDIÇÃO DE CORRIDA DE 3 FORMAS DIFERENTES
+
 int main(int argc, char* argv[]){
 	double sum;
 	double a[256], b[256];
@@ -12,18 +13,18 @@ int main(int argc, char* argv[]){
 		b[i] = i*2.0;
 	}
 	sum = 0;
+	int totalthreads = omp_get_max_threads();
+	double bancodasthreads[totalthreads]; 
 
-
-	// condição de corrida aqui
-	// quem fizer com critical DENTRO DO LOOP vai perder ponto!: temporaria e critical fora do loop
-		// com tempo e fora do loop
-		// reduce
-		// temporario indexado pelo rank da thread temp[rank]?
-
+	//versao indexada pelo rank
+	#pragma omp parallel for 
 	for(i = 0; i<n;i++){
-		sum = sum + a[i]*b[i];
+		bancodasthreads[omp_get_thread_num()] =  bancodasthreads[omp_get_thread_num()] +  (a[i] * b[i]);
 	}
-
+	// agora percorre o "banco" e devolve o resultado
+	for(i = 0 ; i < totalthreads; i++ ){
+		sum = sum+ bancodasthreads[i];
+	}
 	printf("sum = %f\n",sum);
 
 }
