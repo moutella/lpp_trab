@@ -14,7 +14,8 @@ Trabalhos de Laboratório de Programação Paralela
     - Critical com temporária (COM BUG , codigo da lucia aparenta estar errado)
     + Nova forma   (FEITO)
     - Para cada um desses (ou um desses) utilizar escalonamento (schedule: static, dynamic)
-    
+```
+```diff
 + Programa com Paralelismo funcional  4 threads (1 programa) (FEITO)
 - Produto Escalar com MPI (usando ranks e balanceamento para cada parte do vetor) (1 programa)
 - Produto Escalar Hibrido (2 processos e 2 threads) (1 programa)
