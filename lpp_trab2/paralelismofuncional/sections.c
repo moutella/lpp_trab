@@ -36,6 +36,6 @@ int main(int argc, char* argv[]){
 	
 
 	//resultado esperado:   5559680.000000 ,  0 (ou inifinito se o i iniciar em (1))
-	printf("total %f , %f \n",temp,temp2);
+	//printf("total %f , %f \n",temp,temp2);
 
 }
