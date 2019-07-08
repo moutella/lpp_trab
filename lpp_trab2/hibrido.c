@@ -87,10 +87,10 @@ int main(int argc, char* argv[]){
 	}
 
 	
-//	#pragma omp parallel 
-//	{
+	#pragma omp parallel 
+	{
 
-		#pragma omp parallel for reduction(+:aux)	
+		#pragma omp for reduction(+:aux)	
 		for(i = my_rank*local_n; i < local_n*(my_rank+1); i++){
 			//printf("processo(%d): %d \n",my_rank,i);
 			aux = aux + a[i]*b[i];
@@ -98,7 +98,7 @@ int main(int argc, char* argv[]){
 		//printf("processo(%d) TOTAL: %f \n",my_rank,aux);
 		MPI_Reduce(&aux, &sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 	
-//	}
+	}
 	
 	if(my_rank == 0){
 		//printf("Resultado: %f \n",sum);
