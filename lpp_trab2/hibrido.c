@@ -81,13 +81,13 @@ int main(int argc, char* argv[]){
 		// total (n) -  local_n 
 		// processo 0:  10 - 2 = 8
 		//processo  1:  10 - (2+1) = 9
-		int amais = n - (local_n)+my_rank;
+		int amais = (local_n*num_processos)+my_rank;
 		//printf("TEM RESTO(%d): %d \n",my_rank,amais);
 		aux = aux + a[amais]*b[amais];
 	}
 
 	
-	#pragma omp parallel 
+	#pragma omp parallel private(i)
 	{
 
 		#pragma omp for reduction(+:aux)	

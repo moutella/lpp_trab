@@ -64,13 +64,13 @@ int main(int argc, char* argv[]){
 	int tag=200; // tipo de mensagem (único)
 	MPI_Status status;
 	MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+    	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &num_processos);
 
 	local_n = n / num_processos;
-	//printf("LOCAL n: %d\n",local_n);
+	printf("LOCAL n: %d\n",local_n);
 	resto = n%num_processos;
-	//printf("RESTO: %d \n",resto);
+	printf("RESTO: %d \n",resto);
 	
 	double aux = 0;
 
@@ -79,7 +79,7 @@ int main(int argc, char* argv[]){
 		// total (n) -  local_n 
 		// processo 0:  10 - 2 = 8
 		//processo  1:  10 - (2+1) = 9
-		int amais = n - (local_n)+my_rank;
+		int amais = (local_n*num_processos)+my_rank;
 		//printf("TEM RESTO(%d): %d \n",my_rank,amais);
 		aux = aux + a[amais]*b[amais];
 	}
@@ -93,9 +93,9 @@ int main(int argc, char* argv[]){
 	// reduce para o mestre ( TA CERTO?)
 	MPI_Reduce(&aux, &sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
-	//if(my_rank == 0){
+	if(my_rank == 0){
 		//printf("Resultado: %f \n",sum);
-	//}
+	}
 	MPI_Finalize();
 
 }
