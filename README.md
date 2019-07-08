@@ -20,3 +20,6 @@ Trabalhos de Laboratório de Programação Paralela
 + - Produto Escalar com MPI (usando ranks e balanceamento para cada parte do vetor) (1 programa) (FEITO)
 + - Produto Escalar Hibrido (2 processos e 2 threads) (1 programa) (FEITO)
 ```
+
+    - EXTRA: Gerar Graficos de novo?
+
