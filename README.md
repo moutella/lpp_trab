@@ -18,5 +18,5 @@ Trabalhos de Laboratório de Programação Paralela
 ```diff
 + - Programa com Paralelismo funcional  4 threads (1 programa) (FEITO)
 + - Produto Escalar com MPI (usando ranks e balanceamento para cada parte do vetor) (1 programa) (FEITO)
-- - Produto Escalar Hibrido (2 processos e 2 threads) (1 programa) 
++ - Produto Escalar Hibrido (2 processos e 2 threads) (1 programa) (FEITO)
 ```
