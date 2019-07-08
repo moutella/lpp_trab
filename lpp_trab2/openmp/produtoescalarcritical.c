@@ -14,13 +14,7 @@ int main(int argc, char* argv[]){
 		b[i] = i*2.0;
 	}
 	sum = 0;
-	// condição de corrida aqui
-	// quem fizer com critical DENTRO DO LOOP vai perder ponto!: temporaria e critical fora do loop
-		// com temp e fora do loop
-		// reduce
-		// temporario indexado pelo rank da thread temp[rank]?
 
-	// ISSO AQUI TA MUITO ERRADO (ele ta percorrendo o vetor INTEIRO 4 vezes (o numero de threads vezes))
 	#pragma omp parallel shared(a,b,sum) private(valor,i)
 	{
 		double temp = 0;
@@ -34,6 +28,6 @@ int main(int argc, char* argv[]){
 		sum = sum + temp;
 
 	}
-	printf("sum = %f\n",sum);
+	//printf("sum = %f\n",sum);
 
 }
