@@ -11,7 +11,7 @@ Trabalhos de Laboratório de Programação Paralela
 - Resolver condição de corrida no produto escalar(OpenMP) 4 threads  ( 3 programas)
     ```diff
     + Reduce        (FEITO)
-    - Critical com temporária (COM BUG , codigo da lucia aparenta estar errado)
+    + Critical com temporária (FEITO)
     + Nova forma   (FEITO)
     - Para cada um desses (ou um desses) utilizar escalonamento (schedule: static, dynamic)
     ```
