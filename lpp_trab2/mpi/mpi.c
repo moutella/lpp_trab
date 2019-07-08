@@ -43,16 +43,16 @@
 
 int main(int argc, char* argv[]){
 
-// inicializa os 2 vetores    ( NAO TA 100% AINDA TEM ALGO ERRADO?)
-	double sum;
-	double a[10],b[10];
-	int n=10 , i;
+// inicializa os 2 vetores    
+ 	double sum;
+	double a[256],b[256];
+	int n =256, i;
 	for(i = 0; i<n; i++){
 		a[i] = i*0.5;
 		b[i] = i*2.0;
 	}
 	sum = 0;
-//////////////////////////
+
 	// inicialização do MPI
 	int my_rank;
 	int num_processos;
@@ -66,33 +66,36 @@ int main(int argc, char* argv[]){
 	MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &num_processos);
+
 	local_n = n / num_processos;
-	//printf("LOCAL n %d\n",local_n);
+	//printf("LOCAL n: %d\n",local_n);
 	resto = n%num_processos;
 	//printf("RESTO: %d \n",resto);
+	
 	double aux = 0;
+
 	if(my_rank < resto){
 		// um pedaço do array a mais
 		// total (n) -  local_n 
 		// processo 0:  10 - 2 = 8
 		//processo  1:  10 - (2+1) = 9
 		int amais = n - (local_n)+my_rank;
-		printf("TEM RESTO(%d): %d \n",my_rank,amais);
+		//printf("TEM RESTO(%d): %d \n",my_rank,amais);
 		aux = aux + a[amais]*b[amais];
 	}
 		
-	for(i = my_rank*2; i < local_n*(my_rank+1); i++){
-		printf("processo(%d) i: %d \n",my_rank,i);
+	for(i = my_rank*local_n; i < local_n*(my_rank+1); i++){
+		//printf("processo(%d) i: %d \n",my_rank,i);
 		aux = aux + a[i]*b[i];
 	}
-	printf("processo(%d) TOTAL: %f \n",my_rank,aux);
+	//printf("processo(%d) TOTAL: %f \n",my_rank,aux);
 	
 	// reduce para o mestre ( TA CERTO?)
 	MPI_Reduce(&aux, &sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
-	if(my_rank == 0){
-		printf("Resultado: %f \n",sum);
-	}
+	//if(my_rank == 0){
+		//printf("Resultado: %f \n",sum);
+	//}
 	MPI_Finalize();
 
 }
