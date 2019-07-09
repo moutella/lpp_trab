@@ -55,3 +55,23 @@ for i in {1..100}
 do
 	{ time mpirun -np 2 --hostfile hostfile hibrido.out ; } 2>>resultados/hibrido.txt
 done
+
+
+echo "Produto Escalar: openMP 4 threads (Critical)(Static)"
+gcc openmp/produtoescalarcriticalstatic.c -o openmp/produtoescalarcriticalstatic.out -fopenmp
+export OMP_NUM_THREADS=4
+
+for i in {1..100}
+do
+	{ time ./openmp/produtoescalarcriticalstatic.out ; } 2>>resultados/static.txt 
+done
+
+
+echo "Produto Escalar: openMP 4 threads (Critical)(Dynamic)"
+gcc openmp/produtoescalarcriticaldyna.c -o openmp/produtoescalarcriticaldynamic.out -fopenmp
+export OMP_NUM_THREADS=4
+
+for i in {1..100}
+do
+	{ time ./openmp/produtoescalarcriticaldynamic.out ; } 2>>resultados/dynamic.txt 
+done
